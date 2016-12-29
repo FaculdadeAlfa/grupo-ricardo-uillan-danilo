@@ -1,10 +1,10 @@
 <form Name="calc">  
-  <div class="container">
+  <div class="container" ng-controller="MainController">
     <div class="jumbotron">
       <h1>Calculadora</h1>
       <div class="row">
         <div class="col-md-12">
-          <input type="text" name="display" class="form-control" disabled/>
+          <input type="text" name="display" class="form-control" ng-change="salvarValor()" ng-model="valorMostrado"/>
         </div>
       </div>
       <br>
@@ -13,55 +13,55 @@
           <input type="button" style="width: 100%;" class="btn btn-default" value="0" OnClick="calc.display.value+='0'" />
         </div>
         <div class="col-md-3">
-          <input type="button" style="width: 100%;" class="btn btn-default" value="1" OnClick="calc.display.value+='1'" />
+          <input type="button" style="width: 100%;" class="btn btn-default" value="1" ng-click="salvarValor(1)"/>
         </div>
         <div class="col-md-3">
-          <input type="button" style="width: 100%;" class="btn btn-default" value="2" OnClick="calc.display.value+='2'" />
+          <input type="button" style="width: 100%;" class="btn btn-default" value="2" ng-click="salvarValor(2)" />
         </div>
         <div class="col-md-3">
-          <input type="button" style="width: 100%;" class="btn btn-default" value="+" OnClick="calc.display.value+='+'" />
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-3">
-          <input type="button" style="width: 100%;" class="btn btn-default" value="3" OnClick="calc.display.value+='3'" />
-        </div>
-        <div class="col-md-3">
-          <input type="button" style="width: 100%;" class="btn btn-default" value="4" OnClick="calc.display.value+='4'" />
-        </div>
-        <div class="col-md-3">
-          <input type="button" style="width: 100%;" class="btn btn-default" value="5" OnClick="calc.display.value+='5'" />
-        </div>
-        <div class="col-md-3">
-          <input type="button" style="width: 100%;" class="btn btn-default" value="-" OnClick="calc.display.value+='-'" />
+          <input type="button" style="width: 100%;" class="btn btn-default" value="+" ng-click="somar()" />
         </div>
       </div>
       <div class="row">
         <div class="col-md-3">
-          <input type="button" style="width: 100%;" class="btn btn-default" value="6" OnClick="calc.display.value+='6'" />
+          <input type="button" style="width: 100%;" class="btn btn-default" value="3" ng-click="salvarValor(3)" />
+        </div>
+        <div class="col-md-3">
+          <input type="button" style="width: 100%;" class="btn btn-default" value="4" ng-click="salvarValor(4)" />
+        </div>
+        <div class="col-md-3">
+          <input type="button" style="width: 100%;" class="btn btn-default" value="5" ng-click="salvarValor(5)" />
+        </div>
+        <div class="col-md-3">
+          <input type="button" style="width: 100%;" class="btn btn-default" value="-" ng-click="subtrair()" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <input type="button" style="width: 100%;" class="btn btn-default" value="6" ng-click="salvarValor(6)" />
           </div>
           <div class="col-md-3">
-            <input type="button" style="width: 100%;" class="btn btn-default" value="7" OnClick="calc.display.value+='7'" />
+            <input type="button" style="width: 100%;" class="btn btn-default" value="7" ng-click="salvarValor(7)" />
           </div>
           <div class="col-md-3">
-            <input type="button" style="width: 100%;" class="btn btn-default" value="8" OnClick="calc.display.value+='8'" />
+            <input type="button" style="width: 100%;" class="btn btn-default" value="8" ng-click="salvarValor(8)" />
           </div>
           <div class="col-md-3">
-            <input type="button" style="width: 100%;" class="btn btn-default" value="x" OnClick="calc.display.value+='*'" />
+            <input type="button" style="width: 100%;" class="btn btn-default" value="x" ng-click="multiplicar()" />
           </div>
       </div>
       <div class="row">
         <div class="col-md-3">
-          <input type="button" style="width: 100%;" class="btn btn-default" value="9" OnClick="calc.display.value+='9'" />
+          <input type="button" style="width: 100%;" class="btn btn-default" value="9" ng-click="salvarValor(9)" />
         </div>
         <div class="col-md-3">
-          <input type="button" style="width: 100%;" class="btn btn-default" value="C" OnClick="calc.display.value=''" />
+          <input type="button" style="width: 100%;" class="btn btn-default" value="C" ng-click="limparValores()" />
         </div>
         <div class="col-md-3">
-          <input type="button" style="width: 100%;" class="btn btn-default" value="=" OnClick="calc.display.value=eval(calc.display.value)" />
+          <input type="button" style="width: 100%;" class="btn btn-default" value="=" ng-click="calcularTotal()" />
         </div>
         <div class="col-md-3">
-          <input type="button" style="width: 100%;" class="btn btn-default" value="/" OnClick="calc.display.value+='/'" />
+          <input type="button" style="width: 100%;" class="btn btn-default" value="/" ng-click="dividr()"  />
         </div>
       </div>
     </div>
