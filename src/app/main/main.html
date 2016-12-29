@@ -1,34 +1,67 @@
 <div class="container">
-
-  <div>
-    <acme-navbar creation-date="main.creationDate"></acme-navbar>
-  </div>
-
-  <div class="jumbotron text-center">
-    <h1>'Allo, 'Allo!</h1>
-    <p class="lead">
-      <img src="assets/images/yeoman.png" alt="I'm Yeoman"><br>
-      Always a pleasure scaffolding your apps.
-    </p>
-    <p class="animated infinite" ng-class="main.classAnimation">
-      <button type="button" class="btn btn-lg btn-success" ng-click="main.showToastr()">Splendid Toastr</button>
-    </p>
-    <p>
-      With ♥ thanks to the contributions of<acme-malarkey extra-values="['Yeoman', 'Gulp', 'Angular']"></acme-malarkey>
-    </p>
-  </div>
-
-  <div class="row">
-    <div class="col-sm-6 col-md-4" ng-repeat="awesomeThing in main.awesomeThings | orderBy:'rank'">
-      <div class="thumbnail">
-        <img class="pull-right" ng-src="assets/images/{{ awesomeThing.logo }}" alt="{{ awesomeThing.title }}">
-        <div class="caption">
-          <h3>{{ awesomeThing.title }}</h3>
-          <p>{{ awesomeThing.description }}</p>
-          <p><a ng-href="{{awesomeThing.url}}">{{ awesomeThing.url }}</a></p>
+  <div class="jumbotron">
+    <h1>Calculadora</h1>  
+    <div class="row">
+      <div class="col-md-12">
+        <input type="text" name="visor" class="form-control">
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-3">
+        <input class="btn btn-default" value="0" OnClick="calc.display.value+='0'">
+      </div>
+      <div class="col-md-3">
+        <input class="btn btn-default" value="1" OnClick="calc.display.value+='1'">
+      </div>
+      <div class="col-md-3">
+        <input class="btn btn-default" value="2" OnClick="calc.display.value+='2'">
+      </div>
+      <div class="col-md-3">
+        <input class="btn btn-default" value="+" OnClick="calc.display.value+='+'">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <input class="btn btn-default" value="3" OnClick="calc.display.value+='3'">
         </div>
+        <div class="col-md-3">
+          <input class="btn btn-default" value="4" OnClick="calc.display.value+='4'">
+        </div>
+        <div class="col-md-3">
+          <input class="btn btn-default" value="5" OnClick="calc.display.value+='5'">
+        </div>
+        <div class="col-md-3">
+          <input class="btn btn-default" value="-" OnClick="calc.display.value+='-'">
+        </div>
+      </div>
+    <div class="row">
+      <div class="col-md-3">
+        <input class="btn btn-default" value="6" OnClick="calc.display.value+='6'">
+      </div>
+      <div class="col-md-3">
+        <input class="btn btn-default" value="7" OnClick="calc.display.value+='7'">
+      </div>
+      <div class="col-md-3">
+        <input class="btn btn-default" value="8" OnClick="calc.display.value+='8'">
+      </div>
+      <div class="col-md-3">
+        <input class="btn btn-default" value="x" OnClick="calc.display.value+='*'">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <input class="btn btn-default" value="9" OnClick="calc.display.value+='9'">
+      </div>
+      <div class="col-md-3">
+        <input class="btn btn-default" value="C" OnClick="calc.display.value=''">
+      </div>
+      <div class="col-md-3">
+        <input class="btn btn-default" value="=" OnClick="calc.display.value=eval(calc.display.value)">
+      </div>
+      <div class="col-md-3">
+        <input class="btn btn-default" value="/" OnClick="calc.display.value+='/'">
       </div>
     </div>
   </div>
-
 </div>
