@@ -14,6 +14,9 @@ export class MainController {
 
     $scope.salvarValor = function(valor) {
       $scope.historico += valor;
+      if($scope.valorMostrado === 0 || $scope.valorMostrado === '0'){
+        $scope.valorMostrado = "";
+      }
       $scope.valorMostrado += valor.toString();
       $scope.valor = parseFloat($scope.valorMostrado);
 
@@ -63,14 +66,14 @@ export class MainController {
 
     $scope.limparValores = function() {
       $scope.limparValorMostrado();
-			$scope.historico = null;
-      $scope.operacao = null;
-			$scope.memoria = null;
-      $scope.valor = null;
+			$scope.historico = "";
+      $scope.operacao = "";
+			$scope.memoria = "";
+      $scope.valor = "";
 		};
 
     $scope.limparValorMostrado = function() {
-    	$scope.valorMostrado = null;
+    	$scope.valorMostrado = "";
     }
 
   }
