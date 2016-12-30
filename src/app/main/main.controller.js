@@ -4,9 +4,10 @@ export class MainController {
 
     $scope.valorMostrado = '';
     $scope.historico = '';
-		$scope.valor = null;
-    $scope.memoria = null;
-		$scope.operacao = null;
+		$scope.valor = '';
+    $scope.memoria = '';
+		$scope.operacao = '';
+    $scope.resultado = '';
 
     $scope.salvarMemoria = function() {
 				$scope.memoria = parseFloat($scope.valorMostrado);
@@ -15,7 +16,7 @@ export class MainController {
     $scope.salvarValor = function(valor) {
       $scope.historico += valor;
       if($scope.valorMostrado === 0 || $scope.valorMostrado === '0'){
-        $scope.valorMostrado = "";
+        $scope.valorMostrado = '';
       }
       $scope.valorMostrado += valor.toString();
       $scope.valor = parseFloat($scope.valorMostrado);
@@ -23,57 +24,84 @@ export class MainController {
 		};
 
     $scope.somar = function() {
-			$scope.salvarMemoria();
-			$scope.operacao = "+";
-			$scope.valorMostrado = 0;
-      $scope.historico += ' + ';
+      if($scope.valorMostrado !== ''){
+        if($scope.operacao !== ''){
+          $scope.calcularTrocaOperacao();
+        }
+        $scope.salvarMemoria();
+        $scope.operacao = '+';
+        $scope.limparValorMostrado();
+        $scope.historico += ' + ';
+      }
 		};
 
 		$scope.subtrair = function() {
-			$scope.salvarMemoria();
-			$scope.operacao = "-";
-			$scope.valorMostrado = 0;
-      $scope.historico += ' - ';
+      if($scope.valorMostrado !== ''){
+        if($scope.operacao !== ''){
+          $scope.calcularTrocaOperacao();
+        }
+        $scope.salvarMemoria();
+        $scope.operacao = '-';
+        $scope.limparValorMostrado();
+        $scope.historico += ' - ';
+      }
 		};
 
 		$scope.multiplicar = function() {
-			$scope.salvarMemoria();
-			$scope.operacao = "*";
-			$scope.valorMostrado = 0;
-      $scope.historico += ' * ';
+      if($scope.valorMostrado !== ''){
+        if($scope.operacao !== ''){
+          $scope.calcularTrocaOperacao();
+        }
+        $scope.salvarMemoria();
+        $scope.operacao = '*';
+        $scope.limparValorMostrado();
+        $scope.historico += ' * ';
+      }
 		};
 
 		$scope.dividir = function() {
-			$scope.salvarMemoria();
-			$scope.operacao = "/";
-			$scope.valorMostrado = 0;
-      $scope.historico += ' / ';
+      if($scope.valorMostrado !== ''){
+        if($scope.operacao !== ''){
+          $scope.calcularTrocaOperacao();
+        }
+        $scope.salvarMemoria();
+        $scope.operacao = '/';
+        $scope.limparValorMostrado();
+        $scope.historico += ' / ';
+      }
 		};
 
     $scope.calcularTotal = function() {
-			if ($scope.operacao == "+"){
-				$scope.valor = parseFloat($scope.valor) + parseFloat($scope.memoria);
-			} else if ($scope.operacao == "-"){
-				$scope.valor = parseFloat($scope.memoria) - parseFloat($scope.valor);
-			} else if ($scope.operacao == "*"){
-				$scope.valor = parseFloat($scope.valor) * parseFloat($scope.memoria);
-			} else if ($scope.operacao == "/"){
-				$scope.valor = parseFloat($scope.memoria) / parseFloat($scope.valor);
-			}
-      $scope.valorMostrado = $scope.valor;
-      $scope.historico = $scope.valor;
+      $scope.resultado = $scope.getExpressao();
+      $scope.memoria = $scope.resultado;      
+      $scope.valorMostrado = $scope.resultado;
+      $scope.historico = $scope.resultado;
+		};
+
+    $scope.calcularTrocaOperacao = function() {
+      $scope.resultado = $scope.getExpressao();     
+      $scope.valorMostrado = $scope.resultado;
+      $scope.historico = $scope.resultado;
+      $scope.valor = 0;
+      $scope.memoria = 0;
+      $scope.operacao = '';
 		};
 
     $scope.limparValores = function() {
       $scope.limparValorMostrado();
-			$scope.historico = "";
-      $scope.operacao = "";
-			$scope.memoria = "";
-      $scope.valor = "";
+			$scope.historico = '';
+      $scope.operacao = '';
+			$scope.memoria = '';
+      $scope.valor = '';
+      $scope.resultado = '';
 		};
 
     $scope.limparValorMostrado = function() {
-    	$scope.valorMostrado = "";
+    	$scope.valorMostrado = '';
+    }
+
+    $scope.getExpressao = function() {
+      return eval(' ( ' + $scope.memoria.toString() + ' ) ' + $scope.operacao.toString() + ' ( ' +$scope.valor.toString() + ' ) ');
     }
 
   }
