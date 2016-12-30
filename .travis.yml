@@ -10,3 +10,7 @@
   - bower install
 
  script: gulp test
+ 
+ addons:
+    code_climate:
+        repo_token: 0436c3f30c6c0f04825e3989c2e2cf11624214cd5a33e88a58696644a12920a1
