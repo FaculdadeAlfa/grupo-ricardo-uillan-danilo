@@ -2,20 +2,20 @@ export class MainController {
   constructor ($scope) {
     'ngInject';
 
-    $scope.valorMostrado = "";
+    $scope.valorMostrado = '';
 		$scope.valor = null;
     $scope.memoria = null;
 		$scope.operacao = null;
 
     $scope.salvarMemoria = function() {
-			if ($scope.memoria == null) {
-				$scope.memoria = parseFloat($scope.valor);
-			}
+
+				$scope.memoria = parseFloat($scope.valorMostrado);
+
 		};
 
     $scope.salvarValor = function(valor) {
-			$scope.valor = parseFloat(valor);
-      $scope.valorMostrado = valor;
+      $scope.valorMostrado += valor;
+      $scope.valor = parseFloat($scope.valorMostrado);
 		};
 
     $scope.somar = function() {
@@ -46,11 +46,11 @@ export class MainController {
 			if ($scope.operacao == "+"){
 				$scope.valor = parseFloat($scope.valor) + parseFloat($scope.memoria);
 			} else if ($scope.operacao == "-"){
-				$scope.valor = parseFloat($scope.valor) - parseFloat($scope.memoria);
+				$scope.valor = parseFloat($scope.memoria) - parseFloat($scope.valor);
 			} else if ($scope.operacao == "*"){
 				$scope.valor = parseFloat($scope.valor) * parseFloat($scope.memoria);
 			} else if ($scope.operacao == "/"){
-				$scope.valor = parseFloat($scope.valor) / parseFloat($scope.memoria);
+				$scope.valor = parseFloat($scope.memoria) / parseFloat($scope.valor);
 			}
       $scope.valorMostrado = $scope.valor;
 		};
