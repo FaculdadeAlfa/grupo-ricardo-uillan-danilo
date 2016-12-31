@@ -10,23 +10,43 @@ describe('controllers', () => {
     vm = $controller('MainController');
   }));
 
-  it('should have a timestamp creation date', () => {
-    expect(vm.creationDate).toEqual(jasmine.any(Number));
+  it('deve somar corretamente', function() {
+    vm.salvarValor(2);
+
+    vm.somar();
+
+    vm.salvarValor(2);
+
+    expect(vm.valor).equals(4);
   });
 
-  it('should define animate class after delaying timeout', inject($timeout => {
-    $timeout.flush();
-    expect(vm.classAnimation).toEqual('rubberBand');
-  }));
+  it('deve subtrair corretamente', function() {
+    vm.salvarValor(2);
 
-  it('should show a Toastr info and stop animation when invoke showToastr()', inject(toastr => {
-    vm.showToastr();
-    expect(toastr.info).toHaveBeenCalled();
-    expect(vm.classAnimation).toEqual('');
-  }));
+    vm.subtrair();
 
-  it('should define more than 5 awesome things', () => {
-    expect(angular.isArray(vm.awesomeThings)).toBeTruthy();
-    expect(vm.awesomeThings.length === 5).toBeTruthy();
+    vm.salvarValor(1);
+
+    expect(vm.valor).equals(1);
+  });
+
+  it('deve multiplicar corretamente', function() {
+    vm.salvarValor(3);
+
+    vm.multiplicar();
+
+    vm.salvarValor(2);
+
+    expect(vm.valor).equals(6);
+  });
+
+  it('deve dividir corretamente', function() {
+    vm.salvarValor(10);
+
+    vm.dividir();
+
+    vm.salvarValor(2);
+
+    expect(vm.valor).equals(5);
   });
 });
